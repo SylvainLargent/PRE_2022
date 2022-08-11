@@ -1,0 +1,57 @@
+Dans le Cmake du tello_driver
+	-Ajouter rrt_lib à cet endroit du CMake du tello_driver
+
+	include_directories(
+	# include
+	  ${catkin_INCLUDE_DIRS}
+	  ${rrt_lib_INDLUDE_DIRS}
+	#  ${OpenCV_INCLUDE_DIRS}
+	)
+
+Dans le package.xml du tello_driver
+	-Ajouter <build_depend>rrt_lib</build_depend>
+
+
+Modifier le CMAKE dans tello_driver pour que ces fichiers.launch  puissent être lancés
+
+INSTALLER MOCAP optitrack
+
+	sudo apt-get install ros-fuerte-mocap-optitrack
+
+	Aller dans /opt/ros/melodic/share/mocap_optitrack/config
+	Modifier le fichier mocap.yaml avec les configs suivantes
+
+	#
+	# Definition of all trackable objects
+	# Identifier corresponds to Trackable ID set in Tracking Tools
+	#
+	rigid_bodies:
+	    '24':
+		pose: Robot_1/pose
+		pose2d: Robot_1/ground_pose
+		odom: Robot_1/Odom
+		tf: tf
+		child_frame_id: Robot_1/base_link
+		parent_frame_id: world
+	    '25':
+		pose: Cible/pose
+		pose2d: Cible/ground_pose
+		odom: Cible/Odom
+		tf: tf
+		child_frame_id: Cible/base_link
+		parent_frame_id: world
+	optitrack_config:
+		multicast_address: 239.255.42.99
+		command_port: 1510
+		data_port: 1511
+		enable_optitrack: true
+
+LANCEMENT DU DRONE
+rospack profile
+source devel/setup.bash
+
+Allumer le drone 
+Se connecter au drone par wifi TELLO
+ouvrir deux terminals lancer roslaunch tello_node puis roslaunch asservissement_PI.launch
+
+

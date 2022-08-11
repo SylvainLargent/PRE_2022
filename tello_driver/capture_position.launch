@@ -1,0 +1,6 @@
+<?xml version="1.0"?>
+<launch>
+		<include file ="$(find mocap_optitrack)/launch/mocap.launch"/>
+		<node pkg="tello_driver" name="capture_position_ok" type="capture_position" output="screen">		
+		</node>
+</launch>
