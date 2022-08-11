@@ -1,0 +1,13 @@
+Dans le Cmake du tello_driver
+-Ajouter rrt_lib à cet endroit du CMake du tello_driver
+
+	include_directories(
+	# include
+	  ${catkin_INCLUDE_DIRS}
+	  ${rrt_lib_INDLUDE_DIRS}
+	#  ${OpenCV_INCLUDE_DIRS}
+	)
+
+Dans le package.xml du tello_driver
+-Ajouter <build_depend>rrt_lib</build_depend>
+

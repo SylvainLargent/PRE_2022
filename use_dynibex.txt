@@ -1,0 +1,7 @@
+Configure dynibex tel que la librairie (donc les binaires) sans lp et dans /BIN, à lancer depuis le dossier dynibex-2.2
+	./waf configure --without-lp --prefix=../BIN
+
+Indique au compilateur l'endroit où aller chercher les fonctions de la librairie dynibex (CHANGER LE PATH JUSQU'A LA LIBRAIRIE !)
+	export PKG_CONFIG_PATH=/home/student/Ibex/BIN/share/pkgconfig/
+
+Potentiellement modifier le Cmake pour pouvoir l'utiliser directement au niveau du drones
